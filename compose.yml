@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15
+    container_name: postgres
+    environment:
+      POSTGRES_DB: stockdb
+      POSTGRES_USER: stock-service
+      POSTGRES_PASSWORD: stock-service
+    ports:
+      - "5432:5432"
+    networks:
+      - stock-network
+
+  stock-service:
+    image: respawnables/stock-service:latest
+    container_name: stock-service
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres/stockdb
+      SPRING_DATASOURCE_USERNAME: stock-service
+      SPRING_DATASOURCE_PASSWORD: stock-service
+      SPRING_JPA_HIBERNATE_DDL_AUTO: create-drop
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+    networks:
+      - stock-network
+
+networks:
+  stock-network:
+    driver: bridge
