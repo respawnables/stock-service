@@ -67,7 +67,6 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
                     <image>
-                        <builder>dashaun/builder:tiny</builder>
                         <env>
                             <BP_JVM_VERSION>${java.version}</BP_JVM_VERSION>
                         </env>

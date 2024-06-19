@@ -16,9 +16,9 @@ spring:
   config:
     import: optional:consul:localhost/8500
   datasource:
-    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/stockdb}
-    username: ${SPRING_DATASOURCE_USERNAME:stock-service}
-    password: ${SPRING_DATASOURCE_PASSWORD:stock-service}
+    url: jdbc:postgresql://localhost:5432/stockdb
+    username: stock-service
+    password: stock-service
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:

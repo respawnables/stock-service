@@ -26,7 +26,7 @@ docker push respawnables/stock-service:latest
 
 # Run Nomad Job
 echo "Running Nomad job..."
-nomad job run stock-service.nomad.hcl
+sudo nomad job run stock-service.nomad.hcl
 
 # Check if Nomad job was successful
 if [ $? -ne 0 ]; then

@@ -11,7 +11,6 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import javax.sql.DataSource;
 import java.util.List;
 
-@Configuration
 public class DataSourceConfig {
 
     private final DiscoveryClient discoveryClient;
@@ -23,8 +22,7 @@ public class DataSourceConfig {
         this.environment = environment;
     }
 
-    @Bean
-    @Primary
+
     public DataSource dataSource() {
         final List<ServiceInstance> instances = discoveryClient.getInstances("postgres");
         if (instances.isEmpty()) {
